@@ -134,7 +134,7 @@
                 android:layout_height="25dp"
                 android:id="@+id/cropText"
                 android:layout_below="@+id/ln4"
-                android:text="Hobby: "
+                android:text="Email: "
                 android:textSize="19dp"
                 />
             <TextView
@@ -142,7 +142,7 @@
                 android:layout_width="190dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="80dp"
-                android:id="@+id/profile_hobby"
+                android:id="@+id/profile_email"
                 android:layout_below="@+id/ln4"
                 android:text="XXXXXX"
                 android:textSize="19dp"
@@ -162,7 +162,7 @@
                 android:layout_height="25dp"
                 android:id="@+id/produceText"
                 android:layout_below="@+id/ln5"
-                android:text="Occupation: "
+                android:text="Volunteer: "
                 android:textSize="19dp"
                 android:layout_marginBottom="10dp"
 
@@ -173,7 +173,7 @@
                 android:layout_width="190dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="120dp"
-                android:id="@+id/profile_occupation"
+                android:id="@+id/profile_volunteer"
                 android:layout_below="@+id/ln5"
                 android:text="XXXXXX"
                 android:textSize="19dp"

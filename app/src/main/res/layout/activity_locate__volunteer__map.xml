@@ -1,4 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Locate_Volunteer_Map"
+    android:background="@color/white">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:elevation="10dp"
+        android:background="#fff"
+        android:layout_margin="10dp"
+        android:id="@+id/map_relative2"
+        >
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/radius"
+            android:layout_margin="10dp"
+            android:id="@+id/search_radiusImage"
+            />
+        <EditText
+            android:layout_toRightOf="@+id/search_radiusImage"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:hint="Search Radius in Km"
+            android:id="@+id/search_radius"
+            android:inputType="numberDecimal"
+            />
+        <ImageButton
+            android:layout_toRightOf="@id/search_radius"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/new_search"
+            android:contentDescription="TODO"
+            android:background="#fff"
+            android:id="@+id/search_imageButton"/>
+
+    </RelativeLayout>
+
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,3 +53,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Locate_Volunteer_Map" />
+</RelativeLayout>

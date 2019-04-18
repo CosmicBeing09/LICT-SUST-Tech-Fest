@@ -12,6 +12,9 @@ public interface IApi_Vinfo {
     @GET("V_info.php")
     Call<List<V_info_object>> getVinfo();
 
-    @GET("V_info.php")
+    @GET("profile-list")
     Call<List<Profile_Object>> getProfileinfo();
+
+    @GET("food-request")
+    Call<List<FoodRequestObject>> getFoodRequestObject();
 }

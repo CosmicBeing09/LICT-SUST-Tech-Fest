@@ -37,6 +37,12 @@ public class Profile extends AppCompatActivity {
                     profile_array.add(profile_object);
 
                 }
+                name.setText(profile_array.get(1).getUser().getFirstName());
+                username.setText(profile_array.get(1).getUser().getUsername());
+                phone_no.setText(profile_array.get(1).getPhoneNumber());
+                email.setText(profile_array.get(1).getUser().getEmail());
+                address.setText(profile_array.get(1).getAddress());
+                voluteer.setText(profile_array.get(1).getVolunter());
             }
 
             @Override
@@ -44,5 +50,7 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

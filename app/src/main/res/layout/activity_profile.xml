@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile">
+
+
+        <RelativeLayout
+            android:background="#95abb6"
+            android:layout_marginTop="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:id="@+id/nameText"
+                android:text="Name: "
+                android:textSize="19dp"
+
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="65dp"
+                android:id="@+id/profile_name"
+                android:text="XXXXXXXXXXXX "
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ln1"
+                android:layout_below="@id/profile_name"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="3dp"
+                android:layout_width="100dp"
+                android:layout_height="25dp"
+                android:id="@+id/boyoshText"
+                android:layout_below="@+id/ln1"
+                android:text="Address: "
+                android:textSize="19dp"
+
+                />
+            <TextView
+                android:layout_marginTop="3dp"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="90dp"
+                android:id="@+id/profile_address"
+                android:layout_below="@+id/ln1"
+                android:text="XXXXXXXXXXXX "
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ln2"
+                android:layout_below="@id/profile_address"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="190dp"
+                android:layout_height="25dp"
+                android:id="@+id/jomiText"
+                android:layout_below="@+id/ln2"
+                android:text="Phone No: "
+                android:textSize="19dp"
+
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="190dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="100dp"
+                android:id="@+id/profile_phoneNo"
+                android:layout_below="@+id/ln2"
+                android:text="XXXXXX"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ln3"
+                android:layout_below="@id/jomiText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:id="@+id/elakaText"
+                android:layout_below="@+id/ln3"
+                android:text="User Name: "
+                android:textSize="19dp"
+
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="190dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="120dp"
+                android:id="@+id/profile_userName"
+                android:layout_below="@+id/ln3"
+                android:text="XXXXXX"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ln4"
+                android:layout_below="@id/elakaText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="120dp"
+                android:layout_height="25dp"
+                android:id="@+id/cropText"
+                android:layout_below="@+id/ln4"
+                android:text="Hobby: "
+                android:textSize="19dp"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="190dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="80dp"
+                android:id="@+id/profile_hobby"
+                android:layout_below="@+id/ln4"
+                android:text="XXXXXX"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/ln5"
+                android:layout_below="@id/cropText"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#fff"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="170dp"
+                android:layout_height="25dp"
+                android:id="@+id/produceText"
+                android:layout_below="@+id/ln5"
+                android:text="Occupation: "
+                android:textSize="19dp"
+                android:layout_marginBottom="10dp"
+
+                />
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="190dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="120dp"
+                android:id="@+id/profile_occupation"
+                android:layout_below="@+id/ln5"
+                android:text="XXXXXX"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+
+</LinearLayout>

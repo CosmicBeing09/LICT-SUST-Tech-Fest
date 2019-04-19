@@ -28,7 +28,7 @@ public interface IApi_Vinfo {
     Call<FoodRequestObject> createFoodRequest(@Body FoodRequestObject foodRequestObject);
 
     @POST("registration/")
-    Call<RegisterObject> createFoodRequest(@Body RegisterObject registerObject);
+    Call<RegisterObject> createRegistration(@Body RegisterObject registerObject);
 
 
 

@@ -34,25 +34,25 @@ public class Registration extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Retrofit.Builder builder = new Retrofit.Builder().baseUrl(Base_URL).addConverterFactory(GsonConverterFactory.create());
+                Retrofit.Builder builder = new Retrofit.Builder().baseUrl("https://sustta.herokuapp.com/api/v1/rest-auth/").addConverterFactory(GsonConverterFactory.create());
                 Retrofit retrofit = builder.build();
                 IApi_Vinfo iApi_vinfo = retrofit.create(IApi_Vinfo.class);
-                Call<RegisterObject> call = iApi_vinfo.createFoodRequest(new RegisterObject(username.getText().toString().trim(),
+                Call<RegisterObject> call = iApi_vinfo.createRegistration(new RegisterObject(username.getText().toString().trim(),
                         email.getText().toString().trim(),password.getText().toString().trim(),confirmPassword.getText().toString().trim()));
 //
-//                call.enqueue(new Callback<FoodRequestObject>() {
-//                    @Override
-//                    public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
-//                        Toast.makeText(Registration.this,response.body().toString(),Toast.LENGTH_LONG).show();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<FoodRequestObject> call, Throwable t) {
-//
-//                        Toast.makeText(Registration.this,"Failed",Toast.LENGTH_LONG).show();
-//
-//                    }
-//                });
+                call.enqueue(new Callback<RegisterObject>() {
+                    @Override
+                    public void onResponse(Call<RegisterObject> call, Response<RegisterObject> response) {
+                        Toast.makeText(Registration.this,response.body().toString(),Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisterObject> call, Throwable t) {
+
+                    }
+                });
+
+
             }
         });
     }

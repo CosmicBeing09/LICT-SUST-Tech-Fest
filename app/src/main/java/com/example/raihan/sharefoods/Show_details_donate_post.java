@@ -73,10 +73,12 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
 
         Profile_Object p = MainActivity.fullProfile.get(request.getDonator()-1);
         Toast.makeText(Show_details_donate_post.this,p.getPhoneNumber(),Toast.LENGTH_SHORT).show();
-//        location.setText(request.getLocation().trim());
+ donatorLocation = request.getLocation().trim();
+ volunteerLocation = MainActivity.myprofile.getAddress();
+         location.setText(request.getLocation().trim());
 //        foodForPerson.setText(request.getQuantity().toString().trim()+"");
 //        volunteerNeeded.setText(request.getQuantity()/4+"");
-//        donatorName.setText(request.getDonator());
+        donatorName.setText(request.getDonator());
 
 
 

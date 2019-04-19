@@ -5,13 +5,16 @@ import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,6 +50,8 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
     public FoodRequestObject foodRequestObject;
     ArrayList<String> nearbyUser = new ArrayList<>();
     Button createPost;
+    Switch aSwitch;
+    Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,10 +61,12 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
         search = findViewById(R.id.search_imageButton);
         searchEditText =findViewById(R.id.search_radius);
         createPost = findViewById(R.id.createPost);
+        aSwitch= findViewById(R.id.viewSwitch);
 
         Intent intent = getIntent();
         userLocation = intent.getStringExtra("location");
         foodRequestObject = intent.getParcelableExtra("object");
+        final ArrayList<Profile_Object> profile_objects = new ArrayList<>();
 
 
 
@@ -118,6 +125,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                                         if (results[0] / 1000 <= Float.valueOf(radius)) {
 
                                             nearbyUser.add(profile_object.getUser().getUsername().toString().trim());
+                                            profile_objects.add(profile_object);
 
                                             markerOptions.position(latLng);
                                             markerOptions.title(volunteerLocation);
@@ -177,6 +185,39 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
             }
         });
 
+
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(aSwitch.isChecked())
+                {
+                    fragment = new Volunteer_preview_fragment();
+                    if(fragment!=null)
+                    {
+                        android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                        android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+                        ft.replace(R.id.map,fragment).addToBackStack("Tag");
+
+                        aSwitch.setText("Info");
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelableArrayList("arrayList",profile_objects);
+                        fragment.setArguments(bundle);
+                        ft.commit();
+                    }
+
+                }
+                else {
+                    android.support.v4.app.FragmentManager fragmentManager = getSupportFragmentManager();
+                    android.support.v4.app.FragmentTransaction ft = fragmentManager.beginTransaction();
+                    aSwitch.setText("Map");
+                    ft.remove(fragment).commit();
+
+
+
+
+                }
+            }
+        });
 
     }
 

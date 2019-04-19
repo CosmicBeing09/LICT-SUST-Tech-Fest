@@ -1,9 +1,12 @@
 package com.example.raihan.sharefoods;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Profile_Object {
+public class Profile_Object implements Parcelable {
 
     @SerializedName("user")
     @Expose
@@ -32,6 +35,25 @@ public class Profile_Object {
 
     public Profile_Object() {
     }
+
+    protected Profile_Object(Parcel in) {
+        address = in.readString();
+        phoneNumber = in.readString();
+        volunter = in.readString();
+        avaliable = in.readString();
+    }
+
+    public static final Creator<Profile_Object> CREATOR = new Creator<Profile_Object>() {
+        @Override
+        public Profile_Object createFromParcel(Parcel in) {
+            return new Profile_Object(in);
+        }
+
+        @Override
+        public Profile_Object[] newArray(int size) {
+            return new Profile_Object[size];
+        }
+    };
 
     public User getUser() {
         return user;
@@ -73,4 +95,16 @@ public class Profile_Object {
         this.avaliable = avaliable;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(address);
+        parcel.writeString(phoneNumber);
+        parcel.writeString(volunter);
+        parcel.writeString(avaliable);
+    }
 }

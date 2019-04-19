@@ -42,6 +42,26 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/map_relative2"
+        android:elevation="10dp"
+        android:layout_marginLeft="280dp"
+        >
+        <Switch
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textOff="Map"
+            android:text="Map"
+            android:textColor="#4c0be3"
+            android:shadowColor="@color/colorAccent"
+            android:textOn="Info"
+            android:layout_marginLeft="1dp"
+            android:id="@+id/viewSwitch"/>
+    </RelativeLayout>
+
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

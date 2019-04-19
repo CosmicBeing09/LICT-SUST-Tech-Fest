@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     String username;
 
     public static Profile_Object myprofile;    //////////////// User Profile object
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +49,6 @@ public class MainActivity extends AppCompatActivity
         getUserInfo();
 
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,8 +56,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Intent intent = new Intent(MainActivity.this,PostRequest.class);
+                startActivity(intent);
+
             }
         });
 
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        mAdapter = new Show_foodRequest_Adapter(requestArray,this);
+        mAdapter = new Show_foodRequest_Adapter(requestArray, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
         feed.setLayoutManager(mLayoutManager);
 
@@ -85,8 +86,7 @@ public class MainActivity extends AppCompatActivity
         call.enqueue(new Callback<List<FoodRequestObject>>() {
             @Override
             public void onResponse(Call<List<FoodRequestObject>> call, Response<List<FoodRequestObject>> response) {
-                for(FoodRequestObject requestObject: response.body())
-                {
+                for (FoodRequestObject requestObject : response.body()) {
                     requestArray.add(requestObject);
                     mAdapter.notifyDataSetChanged();
                     Dialog.dismiss();
@@ -99,11 +99,9 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        requestArray.add(new FoodRequestObject("aaa",1,"ssdd",2,5,"afaf","sssff","safsa"));
+        requestArray.add(new FoodRequestObject("aaa", 1, "ssdd", 2, 5, "afaf", "sssff", "safsa"));
         feed.setItemAnimator(new DefaultItemAnimator());
         feed.setAdapter(mAdapter);
-
-
 
 
     }
@@ -146,52 +144,53 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_myreq) {
             // Handle the camera action
-            Intent intent = new Intent(MainActivity.this,BarChart_Activity.class);
+
+        } else if (id == R.id.nav_dashboard) {
+
+            Intent intent = new Intent(MainActivity.this, BarChart_Activity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
-
-            Intent intent = new Intent(MainActivity.this,Locate_Volunteer_Map.class);
-            startActivity(intent);
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-    void getUserInfo()
-    {
-        Call<List<Profile_Object>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getProfileinfo();
-        call.enqueue(new Callback<List<Profile_Object>>() {
-            @Override
-            public void onResponse(Call<List<Profile_Object>> call, Response<List<Profile_Object>> response) {
-                for(Profile_Object profile_object: response.body())
-                {
-                    fullProfile.add(profile_object);
-                    ///Change needed must
-                    String s = profile_object.getUser().getUsername().trim();
-                   if(s.equals(username)){
-                       myprofile = profile_object;
-                       Log.e("aaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssss");
-                   }
+         else if (id == R.id.nav_response) {
+
+        } else if (id == R.id.nav_leaderboard) {
+
+        }
+        else if(id==R.id.nav_history){
+
+        }
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
+        void getUserInfo()
+        {
+            Call<List<Profile_Object>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getProfileinfo();
+            call.enqueue(new Callback<List<Profile_Object>>() {
+                @Override
+                public void onResponse(Call<List<Profile_Object>> call, Response<List<Profile_Object>> response) {
+                    for (Profile_Object profile_object : response.body()) {
+                        fullProfile.add(profile_object);
+                        ///Change needed must
+                        String s = profile_object.getUser().getUsername().trim();
+                        if (s.equals(username)) {
+                            myprofile = profile_object;
+                            Log.e("aaaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssss");
+                        }
+                    }
+
                 }
 
-            }
+                @Override
+                public void onFailure(Call<List<Profile_Object>> call, Throwable t) {
 
-            @Override
-            public void onFailure(Call<List<Profile_Object>> call, Throwable t) {
-
-            }
-        });
+                }
+            });
+        }
     }
-}

@@ -3,6 +3,9 @@ package com.example.raihan.sharefoods;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  * Created by philipp on 02/06/16.
  */
@@ -10,13 +13,14 @@ public class DayAxisValueFormatter extends ValueFormatter
 {
 
     private final String[] mMonths = new String[]{
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+             "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec","Jan", "Feb", "Mar"
     };
 
     private final BarLineChartBase<?> chart;
 
     public DayAxisValueFormatter(BarLineChartBase<?> chart) {
         this.chart = chart;
+
     }
 
     @Override
@@ -35,7 +39,7 @@ public class DayAxisValueFormatter extends ValueFormatter
             return monthName + " " + yearName;
         } else {
 
-            int dayOfMonth = determineDayOfMonth(days, month + 12 * (year - 2016));
+            int dayOfMonth = determineDayOfMonth(days, month + 12 * (year - 2019));
 
             String appendix = "th";
 
@@ -124,15 +128,15 @@ public class DayAxisValueFormatter extends ValueFormatter
     private int determineYear(int days) {
 
         if (days <= 366)
-            return 2016;
+            return 2019;
         else if (days <= 730)
-            return 2017;
+            return 2020;
         else if (days <= 1094)
-            return 2018;
+            return 2021;
         else if (days <= 1458)
             return 2019;
         else
-            return 2020;
+            return 2022;
 
     }
 }

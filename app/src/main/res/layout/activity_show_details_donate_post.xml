@@ -7,9 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Show_details_donate_post">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
 
         <RelativeLayout
@@ -24,6 +22,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/map"
+                >
             <RelativeLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
@@ -183,10 +186,11 @@
                     />
 
             </RelativeLayout>
+    </ScrollView>
 
         </RelativeLayout>
 
-    </ScrollView>
+
 
 
 

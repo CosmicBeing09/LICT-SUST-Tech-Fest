@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PostRequest">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        >
+<EditText
+    android:id="@+id/foodDonatorLocation"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Location"
+    />
 
-    </fragment>
+    <EditText
+        android:id="@+id/foodDonatorQuantity"
+        android:layout_below="@+id/foodDonatorLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:inputType="numberDecimal"
+        />
+
+    <EditText
+        android:layout_below="@+id/foodDonatorQuantity"
+        android:id="@+id/foodDonatorExpiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Expiary Time"
+        android:inputType="numberDecimal"
+        />
+
+    <EditText
+        android:layout_below="@+id/foodDonatorExpiary"
+        android:id="@+id/foodDonatorDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Description"
+        />
+
+    <EditText
+        android:layout_below="@+id/foodDonatorDescription"
+        android:id="@+id/foodDonatorPickupTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Pick Up Time"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/foodDonatorPickupTime"
+        android:text="Submit"
+        android:id="@+id/foodDonatorSubmit"
+        />
 
 
-
-</ScrollView>
+</RelativeLayout>

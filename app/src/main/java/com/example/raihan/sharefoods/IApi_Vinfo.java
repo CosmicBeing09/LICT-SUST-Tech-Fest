@@ -5,7 +5,9 @@ package com.example.raihan.sharefoods;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 
 public interface IApi_Vinfo {
 
@@ -17,4 +19,12 @@ public interface IApi_Vinfo {
 
     @GET("food-request")
     Call<List<FoodRequestObject>> getFoodRequestObject();
+
+    @GET("donated-food")
+    Call<List<RecordObject>> getRecordObject();
+
+    @POST("donated-food")
+    Call<FoodRequestObject> createFoodRequest(@Body FoodRequestObject foodRequestObject);
+
+
 }

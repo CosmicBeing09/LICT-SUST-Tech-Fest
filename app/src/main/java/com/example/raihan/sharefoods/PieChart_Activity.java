@@ -2,6 +2,7 @@ package com.example.raihan.sharefoods;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,21 +14,41 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+import static com.example.raihan.sharefoods.BarChart_Activity.totalPost;
+import static com.example.raihan.sharefoods.BarChart_Activity.totalResponse;
 
 public class PieChart_Activity extends Fragment {
     private PieChart chart;
     private Typeface tf;
+
+    //String totalResponse;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,6 +58,12 @@ public class PieChart_Activity extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+//        Bundle bundle = this.getArguments();
+//        if(bundle!=null)
+//        {
+//            totalResponse = bundle.getString("Total_response");
+//        }
 
 
         chart = view.findViewById(R.id.pieChart);
@@ -86,11 +113,19 @@ public class PieChart_Activity extends Fragment {
 //            entries.add(new PieEntry((float) (Math.random() * 15) + 15 / 5,i));
 //        }
 
-        entries.add(new PieEntry((float)20.5,"Food Dontaed"));
-        entries.add(new PieEntry((float)32.7,"Total Responded"));
-        entries.add(new PieEntry((float)17.5,"Info provided"));
 
-        PieDataSet dataSet = new PieDataSet(entries, "Election Results");
+
+
+
+        entries.add(new PieEntry((float)totalPost,"Total Food Dontation Request"));
+        entries.add(new PieEntry((float) totalResponse,"Total Responded"));
+        Toast.makeText(getActivity(),String.valueOf(totalPost)+" "+String.valueOf(totalResponse),Toast.LENGTH_SHORT).show();
+
+
+
+        //entries.add(new PieEntry((float)17.5,"Info provided"));
+
+        PieDataSet dataSet = new PieDataSet(entries, "Donation History");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
@@ -142,7 +177,7 @@ public class PieChart_Activity extends Fragment {
 
     private SpannableString generateCenterSpannableText() {
 
-        SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
+        SpannableString s = new SpannableString("ShareTreat\nResponse vs Request");
         s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);

@@ -40,8 +40,8 @@
                     >
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/ic_place_black_24dp"
                         />
 
@@ -49,7 +49,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Neharipara, Lakecity"
-                        android:textSize="28dp"
+                        android:textSize="20dp"
                         android:textStyle="bold"
                         android:id="@+id/Donatorlocation"
                         android:textColor="#040404"
@@ -69,9 +69,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Amount of Food For  "
-                        android:textSize="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="20dp"
                         />
 
                     <TextView
@@ -79,9 +78,9 @@
                         android:layout_height="wrap_content"
                         android:text="10 person"
                         android:id="@+id/FoodForPerson"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textStyle="bold"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
 
                         />
 
@@ -95,17 +94,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Volunteer Needed  :   "
-                        android:textSize="25dp"
+                        android:text="Volunteer Needed  "
+                        android:textSize="20dp"
                         android:layout_marginTop="3dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="20dp"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3 person"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textStyle="bold"
                         android:id="@+id/volunteerNeeded"
                         android:layout_marginTop="3dp"
@@ -125,9 +124,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Donar Name :  "
-                        android:textSize="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="25dp"
+                        android:textSize="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="20dp"
                         />
 
                     <TextView
@@ -135,9 +134,9 @@
                         android:layout_height="wrap_content"
                         android:text="Robiul Haque"
                         android:id="@+id/DonatorName"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:textStyle="bold"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         />
 
                 </LinearLayout>
@@ -153,17 +152,17 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Phone Number : "
-                        android:textSize="25dp"
+                        android:text="Phone Number: "
+                        android:textSize="20dp"
                         android:layout_marginTop="0dp"
-                        android:layout_marginLeft="25dp"
+                        android:layout_marginLeft="20dp"
                         />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="01971429592"
-                        android:textSize="25dp"
+                        android:textSize="20dp"
                         android:id="@+id/DonatorPhoneNo"
                         android:textStyle="bold"
                         android:layout_marginTop="0dp"

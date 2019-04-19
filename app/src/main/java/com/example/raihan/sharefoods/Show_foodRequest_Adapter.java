@@ -49,6 +49,7 @@ public class Show_foodRequest_Adapter extends RecyclerView.Adapter<Show_foodRequ
                     myjson = myJson1;
                     myactivity.putExtra("myjson", myjson);
                     context.getApplicationContext().startActivity(myactivity);
+//                    Toast.makeText(context,MainActivity.myprofile.getAddress(),Toast.LENGTH_SHORT).show();
                 }
             });
 

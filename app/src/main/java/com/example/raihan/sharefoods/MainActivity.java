@@ -1,5 +1,6 @@
 package com.example.raihan.sharefoods;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,13 +33,23 @@ public class MainActivity extends AppCompatActivity
     RecyclerView feed;
     public static String userLocation;
     private Show_foodRequest_Adapter mAdapter;
-    public List<FoodRequestObject> profileArray = new ArrayList<>();
+    public List<FoodRequestObject> requestArray = new ArrayList<>();
+    public static List<Profile_Object> fullProfile = new ArrayList<>();  //////////////////// Full database profile
+    String username;
+
+    public static Profile_Object myprofile;    //////////////// User Profile object
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        userLocation = getIntent().getStringExtra("username");
+        username = userLocation.trim();
         getUserInfo();
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -61,7 +73,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        mAdapter = new Show_foodRequest_Adapter(profileArray,this);
+        mAdapter = new Show_foodRequest_Adapter(requestArray,this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
         feed.setLayoutManager(mLayoutManager);
 
@@ -75,10 +87,11 @@ public class MainActivity extends AppCompatActivity
             public void onResponse(Call<List<FoodRequestObject>> call, Response<List<FoodRequestObject>> response) {
                 for(FoodRequestObject requestObject: response.body())
                 {
-                    profileArray.add(requestObject);
+                    requestArray.add(requestObject);
                     mAdapter.notifyDataSetChanged();
                     Dialog.dismiss();
                 }
+
             }
 
             @Override
@@ -86,7 +99,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        profileArray.add(new FoodRequestObject("aaa",1,"ssdd",2,5,"afaf","sssff","safsa"));
+        requestArray.add(new FoodRequestObject("aaa",1,"ssdd",2,5,"afaf","sssff","safsa"));
         feed.setItemAnimator(new DefaultItemAnimator());
         feed.setAdapter(mAdapter);
 
@@ -164,9 +177,13 @@ public class MainActivity extends AppCompatActivity
             public void onResponse(Call<List<Profile_Object>> call, Response<List<Profile_Object>> response) {
                 for(Profile_Object profile_object: response.body())
                 {
+                    fullProfile.add(profile_object);
                     ///Change needed must
-                   userLocation = profile_object.getAddress().trim();
-
+                    String s = profile_object.getUser().getUsername().trim();
+                   if(s.equals(username)){
+                       myprofile = profile_object;
+                       Log.e("aaaaaaaaaaaaaaaaa","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssss");
+                   }
                 }
 
             }

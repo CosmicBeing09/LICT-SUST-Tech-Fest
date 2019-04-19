@@ -41,7 +41,7 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
     TextView location,foodForPerson,volunteerNeeded,donatorName,donatorConatct;
     Button submit;
     ArrayList<LatLng> markerPoints;
-    String donatorLocation="Amborkhana",volunteerLocation = "IICT SUST";
+    String donatorLocation="Amborkhana",volunteerLocation = "IICT SUST";  /////////////// User(Here volunteer) location from Mainactivity.myprofile object
 
     Address address;
     LatLng volunteer_latLng,Donator_latLng;
@@ -60,6 +60,8 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
         Gson gson = new Gson();
         request = gson.fromJson(getIntent().getStringExtra("myjson"),FoodRequestObject.class);
         Toast.makeText(Show_details_donate_post.this,request.getLocation(),Toast.LENGTH_LONG).show();
+/////////////////////
+      //  request is Foodrequestobject
 
         location = findViewById(R.id.Donatorlocation);
         foodForPerson = findViewById(R.id.FoodForPerson);
@@ -68,6 +70,9 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
         donatorConatct = findViewById(R.id.DonatorPhoneNo);
         submit = findViewById(R.id.VolunteerSubmit);
 
+
+        Profile_Object p = MainActivity.fullProfile.get(request.getDonator()-1);
+        Toast.makeText(Show_details_donate_post.this,p.getPhoneNumber(),Toast.LENGTH_SHORT).show();
 //        location.setText(request.getLocation().trim());
 //        foodForPerson.setText(request.getQuantity().toString().trim()+"");
 //        volunteerNeeded.setText(request.getQuantity()/4+"");

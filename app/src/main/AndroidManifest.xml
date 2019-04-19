@@ -7,6 +7,7 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -49,7 +50,10 @@
 
         <activity
             android:name=".Locate_Volunteer_Map"
-            android:label="@string/title_activity_locate__volunteer__map"></activity>
+            android:label="@string/title_activity_locate__volunteer__map" />
+        <activity
+            android:name=".Show_details_donate_post"
+            android:label="@string/title_activity_show_details_donate_post"></activity>
     </application>
 
 </manifest>

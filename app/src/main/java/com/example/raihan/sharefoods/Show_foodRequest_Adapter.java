@@ -21,6 +21,7 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class Show_foodRequest_Adapter extends RecyclerView.Adapter<Show_foodRequest_Adapter.MyViewHolder> {
     private List<FoodRequestObject> obj;
+    String myjson;
     private Context context;
 
 
@@ -40,21 +41,14 @@ public class Show_foodRequest_Adapter extends RecyclerView.Adapter<Show_foodRequ
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent myactivity = new Intent(context.getApplicationContext(), Show_Profile.class);
-//                    Gson gson = new Gson();
-//
-//
-//
-//                    myactivity.addFlags(FLAG_ACTIVITY_NEW_TASK);
-//                    Profile p = class_list.get(getAdapterPosition());
-//                    String myJson1 = gson.toJson(p);
-//                    myjson = myJson1;
-//
-//                    myactivity.putExtra("myjson", myjson);
-//                    //                    myactivity.putExtra("Position",p);
+                    Intent myactivity = new Intent(context.getApplicationContext(), Show_details_donate_post.class);
+                    Gson gson = new Gson();
+                    myactivity.addFlags(FLAG_ACTIVITY_NEW_TASK);
                     FoodRequestObject f = obj.get(getAdapterPosition());
-//                    cn.getApplicationContext().startActivity(myactivity);
-                    Toast.makeText(context,f.getLocation(),Toast.LENGTH_SHORT).show();
+                    String myJson1 = gson.toJson(f);
+                    myjson = myJson1;
+                    myactivity.putExtra("myjson", myjson);
+                    context.getApplicationContext().startActivity(myactivity);
                 }
             });
 

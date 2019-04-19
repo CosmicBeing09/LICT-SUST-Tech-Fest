@@ -29,12 +29,15 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView feed;
+    public static String userLocation;
     private Show_foodRequest_Adapter mAdapter;
     public List<FoodRequestObject> profileArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getUserInfo();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity
         profileArray.add(new FoodRequestObject("aaa",1,"ssdd",2,5,"afaf","sssff","safsa"));
         feed.setItemAnimator(new DefaultItemAnimator());
         feed.setAdapter(mAdapter);
+
 
 
 
@@ -151,5 +155,26 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    void getUserInfo()
+    {
+        Call<List<Profile_Object>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getProfileinfo();
+        call.enqueue(new Callback<List<Profile_Object>>() {
+            @Override
+            public void onResponse(Call<List<Profile_Object>> call, Response<List<Profile_Object>> response) {
+                for(Profile_Object profile_object: response.body())
+                {
+                    ///Change needed must
+                   userLocation = profile_object.getAddress().trim();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Profile_Object>> call, Throwable t) {
+
+            }
+        });
     }
 }

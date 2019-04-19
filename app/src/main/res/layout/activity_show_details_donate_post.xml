@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Show_details_donate_post">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:map="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                />
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/map"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/a1"
+                    >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_place_black_24dp"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Neharipara, Lakecity"
+                        android:textSize="28dp"
+                        android:textStyle="bold"
+                        android:id="@+id/Donatorlocation"
+                        android:textColor="#040404"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="3dp"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/a1"
+                    android:id="@+id/a2"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Amount of Food For  "
+                        android:textSize="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="25dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10 person"
+                        android:id="@+id/FoodForPerson"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/a3"
+                    android:layout_below="@+id/a2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Volunteer Needed  :   "
+                        android:textSize="25dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginLeft="25dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 person"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:id="@+id/volunteerNeeded"
+                        android:layout_marginTop="3dp"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/a4"
+                    android:layout_below="@+id/a3"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Donar Name :  "
+                        android:textSize="25dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="25dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Robiul Haque"
+                        android:id="@+id/DonatorName"
+                        android:textSize="25dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/a5"
+                    android:layout_below="@+id/a4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number : "
+                        android:textSize="25dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="25dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="01971429592"
+                        android:textSize="25dp"
+                        android:id="@+id/DonatorPhoneNo"
+                        android:textStyle="bold"
+                        android:layout_marginTop="0dp"
+
+                        />
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_below="@+id/a5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Volunteer"
+                    android:id="@+id/VolunteerSubmit"
+                    />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
+
+

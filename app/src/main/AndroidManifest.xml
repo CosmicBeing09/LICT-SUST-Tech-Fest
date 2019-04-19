@@ -56,7 +56,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PostRequest" />
-        <activity android:name=".Post_Food_Request"></activity>
+        <activity android:name=".Post_Food_Request" />
+        <activity android:name=".Registration"></activity>
     </application>
 
 </manifest>

@@ -89,18 +89,18 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 circleOptions.fillColor(0x4D000080);
                 mMap.addCircle(circleOptions);
 
-                Call<List<FoodRequestObject>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getFoodRequestObject();
-                call.enqueue(new Callback<List<FoodRequestObject>>() {
+                Call<List<Profile_Object>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getProfileinfo();
+                call.enqueue(new Callback<List<Profile_Object>>() {
                     @Override
-                    public void onResponse(Call<List<FoodRequestObject>> call, Response<List<FoodRequestObject>> response) {
+                    public void onResponse(Call<List<Profile_Object>> call, Response<List<Profile_Object>> response) {
                         Geocoder geocoder = new Geocoder(Locate_Volunteer_Map.this);
                         List<Address> addressList = null;
                         MarkerOptions markerOptions = new MarkerOptions();
                         String volunteerLocation;
-                        for(FoodRequestObject foodRequestObject: response.body())
+                        for(Profile_Object profile_object: response.body())
                         {
 
-                            volunteerLocation = foodRequestObject.getLocation().toString().trim();
+                            volunteerLocation = profile_object.getAddress().toString().trim();
                             Toast.makeText(Locate_Volunteer_Map.this,volunteerLocation,Toast.LENGTH_SHORT).show();
 
                             try {
@@ -117,7 +117,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
 
                                         if (results[0] / 1000 <= Float.valueOf(radius)) {
 
-                                            nearbyUser.add(volunteerLocation);
+                                            nearbyUser.add(profile_object.getUser().getUsername().toString().trim());
 
                                             markerOptions.position(latLng);
                                             markerOptions.title(volunteerLocation);
@@ -140,7 +140,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                     }
 
                     @Override
-                    public void onFailure(Call<List<FoodRequestObject>> call, Throwable t) {
+                    public void onFailure(Call<List<Profile_Object>> call, Throwable t) {
 
                     }
                 });
@@ -170,10 +170,19 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
 
                     }
                 });
+
+
+                 notification();
+
             }
         });
 
 
+    }
+
+    void notification()
+    {
+        //nayeem
     }
 
 

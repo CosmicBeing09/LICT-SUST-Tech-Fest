@@ -19,10 +19,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     RecyclerView feed;
+    ImageView imageView;
     public static String userLocation;
     private Show_foodRequest_Adapter mAdapter;
     public List<FoodRequestObject> requestArray = new ArrayList<>();
@@ -74,6 +77,19 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        imageView =  headerView.findViewById(R.id.imageView);
+
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,Profile.class);
+                startActivity(intent);
+            }
+        });
+
         mAdapter = new Show_foodRequest_Adapter(requestArray, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MainActivity.this);
         feed.setLayoutManager(mLayoutManager);
@@ -99,7 +115,7 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        requestArray.add(new FoodRequestObject("aaa", 1, "ssdd", 2, 5, "afaf", "sssff", "safsa"));
+
         feed.setItemAnimator(new DefaultItemAnimator());
         feed.setAdapter(mAdapter);
 

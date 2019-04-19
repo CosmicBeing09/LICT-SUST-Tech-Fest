@@ -1,14 +1,17 @@
 package com.example.raihan.sharefoods;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.sql.Time;
 
-public class FoodRequestObject {
+public class FoodRequestObject implements Parcelable{
 
-    public FoodRequestObject(String foodId, Integer donator, String location, Integer quantity, Integer expireTime, String foodDesc, String pickUpTime, String foodStatus) {
-        this.foodId = foodId;
+    public FoodRequestObject(Integer donator, String location, Integer quantity, Integer expireTime, String foodDesc, String pickUpTime, String foodStatus) {
+
         this.donator = donator;
         this.location = location;
         this.quantity = quantity;
@@ -21,9 +24,7 @@ public class FoodRequestObject {
     public FoodRequestObject() {
     }
 
-    @SerializedName("food_id")
-    @Expose
-    private String foodId;
+
     @SerializedName("donator")
     @Expose
     private Integer donator;
@@ -46,13 +47,40 @@ public class FoodRequestObject {
     @Expose
     private String foodStatus;
 
-    public String getFoodId() {
-        return foodId;
+
+    protected FoodRequestObject(Parcel in) {
+        if (in.readByte() == 0) {
+            donator = null;
+        } else {
+            donator = in.readInt();
+        }
+        location = in.readString();
+        if (in.readByte() == 0) {
+            quantity = null;
+        } else {
+            quantity = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            expireTime = null;
+        } else {
+            expireTime = in.readInt();
+        }
+        foodDesc = in.readString();
+        pickUpTime = in.readString();
+        foodStatus = in.readString();
     }
 
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
-    }
+    public static final Creator<FoodRequestObject> CREATOR = new Creator<FoodRequestObject>() {
+        @Override
+        public FoodRequestObject createFromParcel(Parcel in) {
+            return new FoodRequestObject(in);
+        }
+
+        @Override
+        public FoodRequestObject[] newArray(int size) {
+            return new FoodRequestObject[size];
+        }
+    };
 
     public Integer getDonator() {
         return donator;
@@ -108,5 +136,36 @@ public class FoodRequestObject {
 
     public void setFoodStatus(String foodStatus) {
         this.foodStatus = foodStatus;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        if (donator == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(donator);
+        }
+        parcel.writeString(location);
+        if (quantity == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(quantity);
+        }
+        if (expireTime == null) {
+            parcel.writeByte((byte) 0);
+        } else {
+            parcel.writeByte((byte) 1);
+            parcel.writeInt(expireTime);
+        }
+        parcel.writeString(foodDesc);
+        parcel.writeString(pickUpTime);
+        parcel.writeString(foodStatus);
     }
 }

@@ -8,6 +8,7 @@ import android.location.Location;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -29,6 +30,10 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.example.raihan.sharefoods.AppClient.Base_URL;
 
 public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReadyCallback {
 
@@ -38,6 +43,10 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
     Address hostAddress;
     LatLng t_latLng;
     List<Address> distances = new ArrayList<>();
+    public String userLocation;
+    public FoodRequestObject foodRequestObject;
+    ArrayList<String> nearbyUser = new ArrayList<>();
+    Button createPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +55,13 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
 
         search = findViewById(R.id.search_imageButton);
         searchEditText =findViewById(R.id.search_radius);
+        createPost = findViewById(R.id.createPost);
+
+        Intent intent = getIntent();
+        userLocation = intent.getStringExtra("location");
+        foodRequestObject = intent.getParcelableExtra("object");
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -62,7 +78,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 mMap.clear();
 
                 markerOptions.position(t_latLng);
-                markerOptions.title("IICT SUST");
+                markerOptions.title(userLocation);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
                 mMap.addMarker(markerOptions);
 
@@ -101,6 +117,8 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
 
                                         if (results[0] / 1000 <= Float.valueOf(radius)) {
 
+                                            nearbyUser.add(volunteerLocation);
+
                                             markerOptions.position(latLng);
                                             markerOptions.title(volunteerLocation);
                                             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
@@ -128,6 +146,30 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 });
 
 
+            }
+        });
+
+        createPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Retrofit.Builder builder = new Retrofit.Builder().baseUrl(Base_URL).addConverterFactory(GsonConverterFactory.create());
+                Retrofit retrofit = builder.build();
+                IApi_Vinfo iApi_vinfo = retrofit.create(IApi_Vinfo.class);
+                Call<FoodRequestObject> call = iApi_vinfo.createFoodRequest(foodRequestObject);
+
+                call.enqueue(new Callback<FoodRequestObject>() {
+                    @Override
+                    public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
+                        Toast.makeText(Locate_Volunteer_Map.this,response.body().toString(),Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<FoodRequestObject> call, Throwable t) {
+
+                        Toast.makeText(Locate_Volunteer_Map.this,"Failed",Toast.LENGTH_LONG).show();
+
+                    }
+                });
             }
         });
 
@@ -159,7 +201,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
 
 
         try{
-            addressList = geocoder.getFromLocationName("IICT SUST",1);
+            addressList = geocoder.getFromLocationName(userLocation,1);
 
             if(addressList!=null)
             {

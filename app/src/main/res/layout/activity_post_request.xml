@@ -4,55 +4,156 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PostRequest">
+    tools:context=".PostRequest"
+    android:background="#e1ebf2"
+    >
 
-<EditText
-    android:id="@+id/foodDonatorLocation"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REQUEST FORM"
+        android:id="@+id/t0"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="#e15a6c"
+        
+        android:layout_marginLeft="100dp"
+        />
+
+<TextView
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="15dp"
+    android:layout_below="@+id/t0"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:hint="Location"
+    android:text="ENTER YOUR LOCATION:"
+    android:id="@+id/t1"
+    android:textSize="20dp"
+    android:textStyle="italic"
+    android:textColor="#FF160BED"
+    android:layout_marginBottom="5dp"
+    />
+<EditText
+    android:layout_marginLeft="20dp"
+    android:layout_below="@+id/t1"
+    android:id="@+id/foodDonatorLocation"
+    android:layout_width="300dp"
+    android:layout_height="40dp"
+    android:hint="   Location"
+    android:background="@drawable/edit_text_post"
     />
 
-    <EditText
-        android:id="@+id/foodDonatorQuantity"
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HOW MANY PEOPLE CAN EAT?"
+        android:id="@+id/t2"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/foodDonatorLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Quantity"
-        android:inputType="numberDecimal"
         />
 
     <EditText
+
+        android:layout_marginLeft="20dp"
+        android:id="@+id/foodDonatorQuantity"
+        android:layout_below="@+id/t2"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="   Quantity"
+        android:background="@drawable/edit_text_post"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HOW LONG IT WILL STAY FRESH(HOURS)?"
+        android:id="@+id/t3"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
         android:layout_below="@+id/foodDonatorQuantity"
+        />
+
+    <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/t3"
         android:id="@+id/foodDonatorExpiary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Expiary Time"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="     Expiary Time"
+        android:background="@drawable/edit_text_post"
         android:inputType="numberDecimal"
         />
 
-    <EditText
-        android:layout_below="@+id/foodDonatorExpiary"
-        android:id="@+id/foodDonatorDescription"
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Description"
+        android:text="BRIEF DESCRIPTION OF YOUR FOOD"
+        android:id="@+id/t4"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/foodDonatorExpiary"
         />
 
     <EditText
-        android:layout_below="@+id/foodDonatorDescription"
-        android:id="@+id/foodDonatorPickupTime"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/t4"
+        android:id="@+id/foodDonatorDescription"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:background="@drawable/edit_text_post"
+        android:hint="  Description"
+        />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Pick Up Time"
+        android:text="BRIEF DESCRIPTION OF YOUR FOOD"
+        android:id="@+id/t5"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/foodDonatorDescription"
+        />
+
+    <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/t5"
+        android:id="@+id/foodDonatorPickupTime"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="      Pick Up Time"
+        android:background="@drawable/edit_text_post"
         />
 
     <Button
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/foodDonatorPickupTime"
-        android:text="Submit"
+        android:text="NEXT"
         android:id="@+id/foodDonatorSubmit"
+        android:layout_marginLeft="130dp"
+        android:background="#7f79ec"
         />
 
 

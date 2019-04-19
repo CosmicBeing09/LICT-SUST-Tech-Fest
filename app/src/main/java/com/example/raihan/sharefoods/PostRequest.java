@@ -1,10 +1,12 @@
 package com.example.raihan.sharefoods;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 
@@ -13,6 +15,10 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.example.raihan.sharefoods.AppClient.Base_URL;
 
 public class PostRequest extends AppCompatActivity {
 
@@ -35,19 +41,17 @@ public class PostRequest extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Call<FoodRequestObject> call = AppClient.getApiClient().create(IApi_Vinfo.class).createFoodRequest(
-                        new FoodRequestObject("1",1,"SUST",10,23,"Chicken","14:0:0","REQ"));
-                call.enqueue(new Callback<FoodRequestObject>() {
-                    @Override
-                    public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
 
-                    }
+               FoodRequestObject foodRequestObject = new FoodRequestObject(6,Elocation.getText().toString().trim(),
+                       Integer.valueOf(Equantity.getText().toString().trim()),Integer.valueOf(EexpireTime.getText().toString().trim()),
+                       Edescription.getText().toString().trim(),EpickupTime.getText().toString().trim()+":00:00","REQ");
 
-                    @Override
-                    public void onFailure(Call<FoodRequestObject> call, Throwable t) {
 
-                    }
-                });
+                Intent intent = new Intent(PostRequest.this,Locate_Volunteer_Map.class);
+                intent.putExtra("location",Elocation.getText().toString().trim());
+                intent.putExtra("object",foodRequestObject);
+                startActivity(intent);
+
             }
         });
 

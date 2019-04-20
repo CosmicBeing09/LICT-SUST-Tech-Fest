@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
     public List<FoodRequestObject> requestArray = new ArrayList<>();
     public static List<Profile_Object> fullProfile = new ArrayList<>();  //////////////////// Full database profile
     String username;
-    public static String global_ID;
+    public static int global_ID;
     String token_id;
     DatabaseReference def;
 
@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity
                         String s = profile_object.getUser().getUsername().trim();
                         if (s.equals(username)) {
                             myprofile = profile_object;
+                            global_ID = fullProfile.indexOf(profile_object);
                             def.child("fcm-token").child(myprofile.getUser().getUsername().trim()).child("token").setValue(token_id);
                         }
                     }

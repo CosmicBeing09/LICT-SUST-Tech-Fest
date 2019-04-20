@@ -21,6 +21,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
@@ -34,6 +36,14 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.example.raihan.sharefoods.AppClient.Base_URL;
 
 public class Show_details_donate_post extends FragmentActivity implements OnMapReadyCallback {
 
@@ -85,7 +95,26 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                request.se
+                request.setFoodStatus("PRO");
+                Retrofit.Builder builder = new Retrofit.Builder().baseUrl(Base_URL).addConverterFactory(GsonConverterFactory.create());
+                Retrofit retrofit = builder.build();
+                IApi_Vinfo iApi_vinfo = retrofit.create(IApi_Vinfo.class);
+                Call<FoodRequestObject> call = iApi_vinfo.createFoodRequest(request);
+
+                call.enqueue(new Callback<FoodRequestObject>() {
+                    @Override
+                    public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
+                        Toast.makeText(Show_details_donate_post.this,response.body().toString(),Toast.LENGTH_LONG).show();
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<FoodRequestObject> call, Throwable t) {
+
+                        Toast.makeText(Show_details_donate_post.this,"Failed",Toast.LENGTH_LONG).show();
+
+                    }
+                });
             }
         });
 

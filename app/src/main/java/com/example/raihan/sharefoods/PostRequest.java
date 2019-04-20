@@ -42,7 +42,7 @@ public class PostRequest extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               FoodRequestObject foodRequestObject = new FoodRequestObject(6,Elocation.getText().toString().trim(),
+               FoodRequestObject foodRequestObject = new FoodRequestObject(MainActivity.global_ID,Elocation.getText().toString().trim(),
                        Integer.valueOf(Equantity.getText().toString().trim()),Integer.valueOf(EexpireTime.getText().toString().trim()),
                        Edescription.getText().toString().trim(),EpickupTime.getText().toString().trim()+":00:00","REQ");
 

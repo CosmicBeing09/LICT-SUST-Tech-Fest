@@ -249,7 +249,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 for(int i = 0;i<nearbyUser.size();i++){
                     if(nearbyUser.get(i).equals(dataSnapshot.getKey().trim())){
 
-                        def.child("push").child(dataSnapshot.getKey()).child("token").setValue(d.getToken());
+                        def.child("push").child(d.getToken()).child("token").setValue(d.getToken());
                     }
                 }
 

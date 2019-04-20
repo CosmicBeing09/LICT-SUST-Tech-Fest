@@ -181,8 +181,10 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="15dp"
-                    android:text="Volunteer"
+                    android:text="Response"
+                    android:background="@drawable/rounded_button2"
                     android:id="@+id/VolunteerSubmit"
+
                     />
 
             </RelativeLayout>

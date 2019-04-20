@@ -78,11 +78,6 @@ public class Show_foodRequest_Adapter extends RecyclerView.Adapter<Show_foodRequ
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) throws NullPointerException{
 
-//        TextView name = holder.;
-//        TextView location = holder.location;
-//        TextView quantity = holder.quantity;
-//        TextView volunteer = holder.voluteer;
-//        TextView expiaryTime = holder.expiaryTime;
 
 //        name.setText(obj.get(position).getName());
         holder.location.setText(obj.get(position).getLocation());

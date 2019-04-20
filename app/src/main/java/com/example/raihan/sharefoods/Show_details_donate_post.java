@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +82,12 @@ public class Show_details_donate_post extends FragmentActivity implements OnMapR
         donatorName.setText(MainActivity.fullProfile.get(request.getDonator()).getUser().getUsername());
 
 
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                request.se
+            }
+        });
 
     }
 

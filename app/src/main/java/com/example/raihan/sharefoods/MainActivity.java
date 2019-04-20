@@ -1,15 +1,12 @@
 package com.example.raihan.sharefoods;
 
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,8 +17,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.raihan.sharefoods.Objects.Profile_Object;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -29,7 +28,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +35,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView name,phone;
     RecyclerView feed;
     ImageView imageView;
     public static String userLocation;
@@ -90,6 +89,11 @@ public class MainActivity extends AppCompatActivity
 
         View headerView = navigationView.getHeaderView(0);
         imageView =  headerView.findViewById(R.id.imageView);
+        name = headerView.findViewById(R.id.nav_name);
+        phone = headerView.findViewById(R.id.textView);
+
+
+
 
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -217,6 +221,8 @@ public class MainActivity extends AppCompatActivity
                             myprofile = profile_object;
                             global_ID = fullProfile.indexOf(profile_object);
                             def.child("fcm-token").child(myprofile.getUser().getUsername().trim()).child("token").setValue(token_id);
+                            name.setText(myprofile.getUser().getUsername().toString().trim());
+                            phone.setText(myprofile.getPhoneNumber().trim());
                         }
                     }
 

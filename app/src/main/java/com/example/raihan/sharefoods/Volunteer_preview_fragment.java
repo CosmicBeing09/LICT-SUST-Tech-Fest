@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.raihan.sharefoods.Objects.Profile_Object;
+
 import java.util.ArrayList;
 
 public class Volunteer_preview_fragment extends Fragment {

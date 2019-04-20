@@ -7,13 +7,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.raihan.sharefoods.Objects.RegisterObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import static com.example.raihan.sharefoods.AppClient.Base_URL;
 
 public class Registration extends AppCompatActivity {
 

@@ -1,5 +1,6 @@
 package com.example.raihan.sharefoods;
 
+import android.app.Notification;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
@@ -26,6 +27,11 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +59,8 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
     Switch aSwitch;
     Fragment fragment;
 
+    DatabaseReference def,push,del;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +70,13 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
         searchEditText =findViewById(R.id.search_radius);
         createPost = findViewById(R.id.createPost);
         aSwitch= findViewById(R.id.viewSwitch);
+
+        del = FirebaseDatabase.getInstance().getReference();
+        push = FirebaseDatabase.getInstance().getReference();
+        def = FirebaseDatabase.getInstance().getReference();
+
+        del = del.child("push");
+        del.removeValue();
 
         Intent intent = getIntent();
         userLocation = intent.getStringExtra("location");
@@ -138,7 +153,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                                         }
 
                                     }
-
+                                    notification();
                                 }
 
                             } catch (Exception e) {
@@ -169,6 +184,8 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                     @Override
                     public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
                         Toast.makeText(Locate_Volunteer_Map.this,response.body().toString(),Toast.LENGTH_LONG).show();
+                        DatabaseReference def = FirebaseDatabase.getInstance().getReference();
+                        def.child("notification").push().setValue(new notification("New Food Distribution Request",userLocation));
                     }
 
                     @Override
@@ -180,7 +197,6 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 });
 
 
-                 notification();
 
             }
         });
@@ -224,6 +240,41 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
     void notification()
     {
         //nayeem
+
+        push.child("fcm-token").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                dataSnapshot.getKey();
+                Token d = dataSnapshot.getValue(Token.class);
+                for(int i = 0;i<nearbyUser.size();i++){
+                    if(nearbyUser.get(i).equals(dataSnapshot.getKey().trim())){
+
+                        def.child("push").child(dataSnapshot.getKey()).child("token").setValue(d.getToken());
+                    }
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

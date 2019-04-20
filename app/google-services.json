@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "350652579311",
+    "firebase_url": "https://notificationcheck-cb873.firebaseio.com",
+    "project_id": "notificationcheck-cb873",
+    "storage_bucket": "notificationcheck-cb873.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350652579311:android:9eeae5a306585109",
+        "android_client_info": {
+          "package_name": "Share.Foods"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQRjgtHOrZ2JZL8sPEFaqrKtS4XxpMX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350652579311:android:8ce84fcfc239e9d8",
+        "android_client_info": {
+          "package_name": "com.example.hp.notificationcheck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350652579311-hs7duj3okso83c6k4vc1lc2imnfuvso8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hp.notificationcheck",
+            "certificate_hash": "67618494b7a9b5877c4c69e03f34225f52bfb3a9"
+          }
+        },
+        {
+          "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQRjgtHOrZ2JZL8sPEFaqrKtS4XxpMX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350652579311:android:0d6a294a1b1b6711",
+        "android_client_info": {
+          "package_name": "com.example.raihan.sharefoods"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350652579311-londs8uguoss79tivvgc0e456sgippae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.raihan.sharefoods",
+            "certificate_hash": "67618494b7a9b5877c4c69e03f34225f52bfb3a9"
+          }
+        },
+        {
+          "client_id": "350652579311-m6l7f3u4hb242b59fkao4cdnq8695acp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.raihan.sharefoods",
+            "certificate_hash": "8168abe3f15310340b9c94fae99db3c52a6e18d1"
+          }
+        },
+        {
+          "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAQRjgtHOrZ2JZL8sPEFaqrKtS4XxpMX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350652579311-d5k0autn67lvvna164lvvjq22j74ein5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,6 +20,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +44,9 @@ public class MainActivity extends AppCompatActivity
     public List<FoodRequestObject> requestArray = new ArrayList<>();
     public static List<Profile_Object> fullProfile = new ArrayList<>();  //////////////////// Full database profile
     String username;
+    public static String global_ID;
+    String token_id;
+    DatabaseReference def;
 
     public static Profile_Object myprofile;    //////////////// User Profile object
 
@@ -47,8 +55,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userLocation = getIntent().getStringExtra("username");
-        username = userLocation.trim();
+        token_id = FirebaseInstanceId.getInstance().getToken();
+        def = FirebaseDatabase.getInstance().getReference();
+        Intent intent = getIntent();
+        username = intent.getStringExtra("username");
         getUserInfo();
 
 
@@ -162,6 +172,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_myreq) {
             // Handle the camera action
+            Intent intent = new Intent(MainActivity.this,MyRequest.class);
+            startActivity(intent);
+
 
         } else if (id == R.id.nav_dashboard) {
 
@@ -169,7 +182,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.nav_send) {
-
+            Toast.makeText(MainActivity.this,fullProfile.get(2).getUser().getUsername(),Toast.LENGTH_LONG).show();
         }
 
          else if (id == R.id.nav_response) {
@@ -197,7 +210,7 @@ public class MainActivity extends AppCompatActivity
                         String s = profile_object.getUser().getUsername().trim();
                         if (s.equals(username)) {
                             myprofile = profile_object;
-                            Log.e("aaaaaaaaaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassssssssssssssssssssssssssssssss");
+                            def.child("fcm-token").child(myprofile.getUser().getUsername().trim()).child("token").setValue(token_id);
                         }
                     }
 

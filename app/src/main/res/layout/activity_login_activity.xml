@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login_activity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/login_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:hint="User Name "
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            android:drawablePadding="15dp"
+            android:background="@drawable/edit_text_post"/>
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textColorHint="@android:color/white" />-->
+
+        <EditText
+            android:id="@+id/login_phone"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Phone_No"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            android:drawablePadding="15dp"
+            android:background="@drawable/edit_text_post"/>
+
+
+
+
+        <!-- Login Button -->
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rounded_button2"
+            android:text="Login"
+            android:textColor="@android:color/white"
+            />
+
+
+
+        <!-- Link to Login Screen -->
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@null"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="#47c7d2"
+            android:textSize="15dp"
+            tools:ignore="SpUsage" />
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

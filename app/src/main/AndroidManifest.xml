@@ -48,7 +48,7 @@
         <activity
             android:name=".Show_details_donate_post"
             android:label="@string/title_activity_show_details_donate_post" />
-        <activity android:name=".Login">
+        <activity android:name=".Login_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -57,7 +57,8 @@
         </activity>
         <activity android:name=".PostRequest" />
         <activity android:name=".Post_Food_Request" />
-        <activity android:name=".Registration"></activity>
+        <activity android:name=".Registration" />
+        <activity android:name=".Login"></activity>
     </application>
 
 </manifest>

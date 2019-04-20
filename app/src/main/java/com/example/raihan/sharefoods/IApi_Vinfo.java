@@ -31,5 +31,7 @@ public interface IApi_Vinfo {
     Call<RegisterObject> createRegistration(@Body RegisterObject registerObject);
 
 
+    @POST("donated-food/")
+    Call<List<RecordObject>> postRecordObject(@Body RecordObject recordObject);
 
 }

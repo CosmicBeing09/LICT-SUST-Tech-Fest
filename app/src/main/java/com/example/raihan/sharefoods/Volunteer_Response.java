@@ -14,24 +14,23 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.raihan.sharefoods.Login_activity.user_ID;
-
-public class MyRequest extends AppCompatActivity {
+public class Volunteer_Response extends AppCompatActivity {
 
     RecyclerView feed;
-    private Show_foodRequest_Adapter mAdapter;
+    private Volunteer_Response_adapter mAdapter;
     public List<FoodRequestObject> requestArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_request);
-        feed = findViewById(R.id.myReqRecycler);
+        setContentView(R.layout.activity_volunteer__response);
 
-        mAdapter = new Show_foodRequest_Adapter(requestArray, this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(MyRequest.this);
+        feed = findViewById(R.id.volunteerResponse_recycler);
+
+        mAdapter = new Volunteer_Response_adapter(requestArray, this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(Volunteer_Response.this);
         feed.setLayoutManager(mLayoutManager);
 
-        final ProgressDialog Dialog = new ProgressDialog(MyRequest.this);
+        final ProgressDialog Dialog = new ProgressDialog(Volunteer_Response.this);
         Dialog.setMessage("Please Wait.....");
         Dialog.show();
 
@@ -40,10 +39,10 @@ public class MyRequest extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<FoodRequestObject>> call, Response<List<FoodRequestObject>> response) {
                 for (FoodRequestObject requestObject : response.body()) {
-                    if(requestObject.getDonator().equals(MainActivity.global_ID))
-                    requestArray.add(requestObject);
-                    mAdapter.notifyDataSetChanged();
-                    Dialog.dismiss();
+                    if(requestObject.getDonator().equals(MainActivity.global_ID) && requestObject.getFoodStatus().trim().equals("PRO"))
+                        requestArray.add(requestObject);
+                     mAdapter.notifyDataSetChanged();
+                     Dialog.dismiss();
                 }
 
             }

@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Post_Food_Request">
+    tools:context=".Post_Food_FeedBack">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_marginTop="120dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VOLUNTEER DISTRIBUTION DATA"
+        android:id="@+id/t0"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#e15a6c"
+
+        android:layout_marginLeft="15dp"
+        />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/t0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENTER DONATED LOCATION:"
+        android:id="@+id/t1"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
+        />
+    <EditText
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/t1"
+        android:id="@+id/foodVolunLocation"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="   Location"
+        android:background="@drawable/edit_text_post"
+        />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="HOW MANY PEOPLE CAN RECEIVED?"
+        android:id="@+id/t2"
+        android:textSize="20dp"
+        android:textStyle="italic"
+        android:textColor="#FF160BED"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/foodVolunLocation"
+        />
+
+    <EditText
+
+        android:layout_marginLeft="20dp"
+        android:id="@+id/foodVolunQuantity"
+        android:layout_below="@+id/t2"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:hint="   Quantity"
+        android:background="@drawable/edit_text_post"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="5dp"
+        />
+
+<Button
+    android:background="@drawable/rounded_button2"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="120dp"
+    android:layout_below="@+id/foodVolunQuantity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="SEND"
+
+    android:id="@+id/feedback"
+    />
+
+</RelativeLayout>

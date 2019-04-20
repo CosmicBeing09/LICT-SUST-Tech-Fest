@@ -113,7 +113,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onResponse(Call<List<FoodRequestObject>> call, Response<List<FoodRequestObject>> response) {
                 for (FoodRequestObject requestObject : response.body()) {
-                    requestArray.add(requestObject);
+                    if(requestObject.getFoodStatus().trim().equals("REQ")) {
+                        requestArray.add(requestObject);
+                    }
                     mAdapter.notifyDataSetChanged();
                     Dialog.dismiss();
                 }
@@ -186,6 +188,9 @@ public class MainActivity extends AppCompatActivity
         }
 
          else if (id == R.id.nav_response) {
+
+            Intent intent = new Intent(MainActivity.this,Volunteer_Response.class);
+            startActivity(intent);
 
         } else if (id == R.id.nav_leaderboard) {
 

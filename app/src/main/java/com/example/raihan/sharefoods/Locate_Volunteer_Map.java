@@ -123,7 +123,7 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                         {
 
                             volunteerLocation = profile_object.getAddress().toString().trim();
-                            Toast.makeText(Locate_Volunteer_Map.this,volunteerLocation,Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(Locate_Volunteer_Map.this,volunteerLocation,Toast.LENGTH_SHORT).show();
 
                             try {
                                 addressList = geocoder.getFromLocationName(volunteerLocation, 1);
@@ -183,9 +183,11 @@ public class Locate_Volunteer_Map extends FragmentActivity implements OnMapReady
                 call.enqueue(new Callback<FoodRequestObject>() {
                     @Override
                     public void onResponse(Call<FoodRequestObject> call, Response<FoodRequestObject> response) {
-                        Toast.makeText(Locate_Volunteer_Map.this,response.body().toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(Locate_Volunteer_Map.this,"Request Created",Toast.LENGTH_LONG).show();
                         DatabaseReference def = FirebaseDatabase.getInstance().getReference();
                         def.child("notification").push().setValue(new notification("New Food Distribution Request",userLocation));
+                        Intent i = new Intent(Locate_Volunteer_Map.this,MainActivity.class);
+                        startActivity(i);
                     }
 
                     @Override

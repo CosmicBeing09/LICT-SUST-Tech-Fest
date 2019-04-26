@@ -1,5 +1,6 @@
 package com.example.raihan.sharefoods;
 
+import android.app.ProgressDialog;
 import android.graphics.Typeface;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -49,6 +50,9 @@ public class BarChart_Activity extends AppCompatActivity {
         tfLight = Typeface.DEFAULT;
         aSwitch = findViewById(R.id.switchDashBoard);
 
+        final ProgressDialog Dialog = new ProgressDialog(BarChart_Activity.this);
+        Dialog.setMessage("Please Wait.....");
+        Dialog.show();
 
         Call<List<RecordObject>> call = AppClient.getApiClient().create(IApi_Vinfo.class).getRecordObject();
 
@@ -66,7 +70,7 @@ public class BarChart_Activity extends AppCompatActivity {
                        // Toast.makeText(BarChart_Activity.this,String.valueOf(date.getDate()+"\\"+date.getYear()),Toast.LENGTH_LONG).show();
 
                         barEntries.add(new BarEntry(date.getDate(),recordObject.getBeneficent()));
-
+                        Dialog.dismiss();
 
 
                     } catch (ParseException e) {

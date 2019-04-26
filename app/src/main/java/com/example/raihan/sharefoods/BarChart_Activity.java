@@ -40,6 +40,7 @@ public class BarChart_Activity extends AppCompatActivity {
     Fragment fragment;
     public static int totalResponse = 0;
     public static int totalPost;
+    int a = 0;
     ArrayList<Date> dateArrayList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +110,8 @@ public class BarChart_Activity extends AppCompatActivity {
                 xAxis.setGranularity(1f); // only intervals of 1 day
                 xAxis.setLabelCount(7);
                 xAxis.setValueFormatter(xAxisFormatter);
+
+
             }
 
             @Override

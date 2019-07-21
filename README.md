@@ -1,5 +1,7 @@
 # LICT-SUST-Tech-Fest
 
+An android app for sharing foods to fed the unfed
+
 ## Backend API locates in this repo [HappyTreatAPI](https://github.com/tonoy30/happytreat-web)
 ## And this API is deploy in [API](https://sustta.herokuapp.com/api/v1/)
 
